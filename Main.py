@@ -1,4 +1,5 @@
-from 
+import Data_Processing_Transformation as DPT
 
 if __name__ == '__main__':
-    Data_Processing_Transformation.Data_Processing_Transformation("Test")
+    DPT.Data_Processing_Transformation("Data/General")
+

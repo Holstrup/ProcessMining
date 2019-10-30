@@ -14,4 +14,3 @@ class NLP:
         return nltk.word_tokenize(self.sentence)
 
     #def is_question(self):
-   

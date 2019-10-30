@@ -103,6 +103,7 @@ class Data_Processing_Transformation:
         tree = ET.ElementTree(root)
         tree.write("data.xes", encoding="UTF-8", xml_declaration=True)
 
+
     def classification(self, message):
         """
         This is where the magic happens. We need to take a message in

@@ -1,10 +1,5 @@
-import Data_Processing_Transformation
-from Natural_Language_Processing import  NLP
+import Data_Processing_Transformation as DPT
 
 if __name__ == '__main__':
-
-    #Data_Processing_Transformation.Data_Processing_Transformation("Test")
-    nlp=NLP()
-    nlp.set_sentence("Hello. How are you doing?")
-    print(nlp.get_tags())
+    DPT.Data_Processing_Transformation("Data/General")
 

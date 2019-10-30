@@ -10,9 +10,7 @@ class NLP:
         posts = nltk.corpus.nps_chat.xml_posts()[:10000]
 
         featuresets = [(self.dialogue_act_features(post.text), post.get('class')) for post in posts]
-        size = int(len(featuresets) * 0.1)
-        train_set, test_set = featuresets[size:], featuresets[:size]
-        self.classifier = nltk.NaiveBayesClassifier.train(train_set)
+        self.classifier = nltk.NaiveBayesClassifier.train(featuresets)
 
 
 

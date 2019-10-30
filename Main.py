@@ -6,6 +6,6 @@ if __name__ == '__main__':
     DPT.Data_Processing_Transformation("Data/General")
     l=NLP()
     l.set_sentence("is it correctly understood?")
-    l.get_class()
+    print(l.get_class())
     l.set_sentence("thanks!")
-    l.get_class()
+    print(l.get_class())

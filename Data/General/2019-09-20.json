@@ -1,0 +1,44 @@
+[
+    {
+        "client_msg_id": "81B3941F-3CB8-4F9F-8769-DCC298825D26",
+        "type": "message",
+        "text": "I’m at the same table as yesterday ",
+        "user": "UNF9PQFMK",
+        "ts": "1568963089.000400",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gc025267db44",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/7c025267db448215e02400be1b1f1387.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0025-72.png",
+            "first_name": "",
+            "real_name": "Bosse Bandowski",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "bosse.bandowski",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "56d25907-88b5-414d-835e-d0a71b2325d4",
+        "type": "message",
+        "text": "So sorry guys still going to be 5mins or so. Getting charged was such a struggle",
+        "user": "UNCN6EKTN",
+        "ts": "1568963527.001600",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "a00d2194ec06",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2019-09-16\/763429704870_a00d2194ec068508db7c_72.jpg",
+            "first_name": "Sean",
+            "real_name": "Sean Lennon",
+            "display_name": "Sean",
+            "team": "TMZPFSQ7M",
+            "name": "seanlennon97",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    }
+]

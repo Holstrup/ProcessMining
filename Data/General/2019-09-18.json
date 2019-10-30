@@ -1,0 +1,177 @@
+[
+    {
+        "user": "UN4MQMQQ3",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1568796203.000200",
+        "text": "<@UN4MQMQQ3> has joined the channel"
+    },
+    {
+        "client_msg_id": "7a7e0dd2-f556-46bb-816f-c63249972276",
+        "type": "message",
+        "text": "Cheers for the message Alex, I've lobbed 2 ideas down in the doc.",
+        "user": "UNCN6EKTN",
+        "ts": "1568801450.001800",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "a00d2194ec06",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2019-09-16\/763429704870_a00d2194ec068508db7c_72.jpg",
+            "first_name": "Sean",
+            "real_name": "Sean Lennon",
+            "display_name": "Sean",
+            "team": "TMZPFSQ7M",
+            "name": "seanlennon97",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "4202d73c-c048-4785-9f58-a14d42788201",
+        "type": "message",
+        "text": "Pretty rough atm but can flesh them out if needed",
+        "user": "UNCN6EKTN",
+        "ts": "1568801522.002600",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "a00d2194ec06",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2019-09-16\/763429704870_a00d2194ec068508db7c_72.jpg",
+            "first_name": "Sean",
+            "real_name": "Sean Lennon",
+            "display_name": "Sean",
+            "team": "TMZPFSQ7M",
+            "name": "seanlennon97",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "E52AD8D4-70AA-45C6-90F4-75612ABF3FF7",
+        "type": "message",
+        "text": "Nice! I’ll have a look at it later. Is anyone available for meeting tomorrow? Just to settle on a project and work with the idea a bit ",
+        "user": "UNB7UAWU8",
+        "ts": "1568801655.003700",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gbab34c953a4",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/8bab34c953a420a58e48e212dcdb7cd3.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0007-72.png",
+            "first_name": "Alexander",
+            "real_name": "Alexander Holstrup",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "alexanderholstrup",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "A1E66718-54A2-4E06-A0ED-32DFA8F2C6F1",
+        "type": "message",
+        "text": "Yes, after 3pm",
+        "user": "UNF9PQFMK",
+        "ts": "1568801964.004200",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gc025267db44",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/7c025267db448215e02400be1b1f1387.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0025-72.png",
+            "first_name": "",
+            "real_name": "Bosse Bandowski",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "bosse.bandowski",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "b7103dfa-d866-4fb4-9abb-b0f08cfbf6de",
+        "type": "message",
+        "text": "Yepp i can do tomorrow arvo :)",
+        "user": "UN4MQMQQ3",
+        "ts": "1568806707.000400",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "g617526394b3",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/1617526394b3a1ca553ef7f50798190b.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0018-72.png",
+            "first_name": "",
+            "real_name": "Jeremy Marelich",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "jdvmarelich",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "1ae9f31c-b3bf-4d55-85bf-e0fcfe7b9cce",
+        "type": "message",
+        "text": "Let's meet tomorrow at 3 then :slightly_smiling_face:",
+        "user": "UNB7UAWU8",
+        "ts": "1568823707.000600",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gbab34c953a4",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/8bab34c953a420a58e48e212dcdb7cd3.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0007-72.png",
+            "first_name": "Alexander",
+            "real_name": "Alexander Holstrup",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "alexanderholstrup",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "630583a2-b6c7-4d7c-998e-57b0aedf0e09",
+        "type": "message",
+        "text": "Unfortunately I won't be able to make it tomorrow, as Im working on thursdays, but y'all can just update me on friday. I'm up for whatever",
+        "user": "UNEUUMY0N",
+        "ts": "1568830384.001100",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "g6c9c4ffc33b",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/46c9c4ffc33b1445ea01e5363a6b6116.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0012-72.png",
+            "first_name": "",
+            "real_name": "Lasse",
+            "display_name": "Lasse",
+            "team": "TMZPFSQ7M",
+            "name": "lasse",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "268C7096-7B57-4616-90FC-000C6A3E0CB5",
+        "type": "message",
+        "text": "Sounds good, see you then",
+        "user": "UNF9PQFMK",
+        "ts": "1568838070.000400",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gc025267db44",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/7c025267db448215e02400be1b1f1387.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0025-72.png",
+            "first_name": "",
+            "real_name": "Bosse Bandowski",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "bosse.bandowski",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    }
+]

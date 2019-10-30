@@ -1,0 +1,44 @@
+[
+    {
+        "client_msg_id": "B8C4BD08-5301-460B-BC53-639DB717D84C",
+        "type": "message",
+        "text": "Hey guys, did you see Jans response? I won’t be able to be there, but we should probably get back to him",
+        "user": "UNF9PQFMK",
+        "ts": "1569926596.001500",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gc025267db44",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/7c025267db448215e02400be1b1f1387.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0025-72.png",
+            "first_name": "",
+            "real_name": "Bosse Bandowski",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "bosse.bandowski",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "3d226b88-dace-4fd5-97e9-bff84bdb98da",
+        "type": "message",
+        "text": "Oh yeah.. I just saw it. I think it would be a really good idea to meet with him. Should we do it? I can email him if we agree that we want to meet with him",
+        "user": "UNB7UAWU8",
+        "ts": "1569946256.001000",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gbab34c953a4",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/8bab34c953a420a58e48e212dcdb7cd3.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0007-72.png",
+            "first_name": "Alexander",
+            "real_name": "Alexander Holstrup",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "alexanderholstrup",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    }
+]

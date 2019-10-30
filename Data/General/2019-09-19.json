@@ -1,0 +1,170 @@
+[
+    {
+        "client_msg_id": "98d9a2ec-0f54-417a-ad9d-ef1801e460b5",
+        "type": "message",
+        "text": "Where abouts are we meeting?",
+        "user": "UNCN6EKTN",
+        "ts": "1568888685.000800",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "a00d2194ec06",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2019-09-16\/763429704870_a00d2194ec068508db7c_72.jpg",
+            "first_name": "Sean",
+            "real_name": "Sean Lennon",
+            "display_name": "Sean",
+            "team": "TMZPFSQ7M",
+            "name": "seanlennon97",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "5ae43762-8421-45a0-b096-58c591c5ee8a",
+        "type": "message",
+        "text": "I'm in building 358 right now, but I don't mind moving somewhere else if it's easier for you",
+        "user": "UNB7UAWU8",
+        "ts": "1568888827.001900",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gbab34c953a4",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/8bab34c953a420a58e48e212dcdb7cd3.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0007-72.png",
+            "first_name": "Alexander",
+            "real_name": "Alexander Holstrup",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "alexanderholstrup",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "9862FEE7-4281-4AD8-A9B3-D0D46C3721F5",
+        "type": "message",
+        "text": "I’m in 308. Anywhere in the third quadrant sounds good",
+        "user": "UNF9PQFMK",
+        "ts": "1568890728.002800",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gc025267db44",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/7c025267db448215e02400be1b1f1387.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0025-72.png",
+            "first_name": "",
+            "real_name": "Bosse Bandowski",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "bosse.bandowski",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "901d9bc4-5b75-49c3-a900-d5d328f43aeb",
+        "type": "message",
+        "text": "Let's meet around there then. B324?",
+        "user": "UNB7UAWU8",
+        "ts": "1568891282.003300",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gbab34c953a4",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/8bab34c953a420a58e48e212dcdb7cd3.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0007-72.png",
+            "first_name": "Alexander",
+            "real_name": "Alexander Holstrup",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "alexanderholstrup",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "FB659833-E918-4CED-B2F6-98B2BFDB6210",
+        "type": "message",
+        "text": ":ok_hand:",
+        "user": "UNF9PQFMK",
+        "ts": "1568892183.000200",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gc025267db44",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/7c025267db448215e02400be1b1f1387.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0025-72.png",
+            "first_name": "",
+            "real_name": "Bosse Bandowski",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "bosse.bandowski",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "f7d145f6-c08d-49d1-b86b-101429e56a30",
+        "type": "message",
+        "text": "I'm in 324 now. In the part closest to the basketball court",
+        "user": "UNB7UAWU8",
+        "ts": "1568896496.000400",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gbab34c953a4",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/8bab34c953a420a58e48e212dcdb7cd3.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0007-72.png",
+            "first_name": "Alexander",
+            "real_name": "Alexander Holstrup",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "alexanderholstrup",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "4686dc3f-97b5-4646-b0be-6c2bbbed1a03",
+        "type": "message",
+        "text": "So sorry guys I'm gonna be a little late forgot I can't bike and further then I thought",
+        "user": "UNCN6EKTN",
+        "ts": "1568898288.001500",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "a00d2194ec06",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2019-09-16\/763429704870_a00d2194ec068508db7c_72.jpg",
+            "first_name": "Sean",
+            "real_name": "Sean Lennon",
+            "display_name": "Sean",
+            "team": "TMZPFSQ7M",
+            "name": "seanlennon97",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "61ca52fc-bfd6-4aee-a9fc-3d99698bddbb",
+        "type": "message",
+        "text": "<https:\/\/drive.google.com\/drive\/folders\/1eB4UVoUGDl_iNfVdnNLq8qhd-uuqzhVw?usp=sharing>",
+        "user": "UNF9PQFMK",
+        "ts": "1568904037.001900",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gc025267db44",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/7c025267db448215e02400be1b1f1387.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0025-72.png",
+            "first_name": "",
+            "real_name": "Bosse Bandowski",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "bosse.bandowski",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    }
+]

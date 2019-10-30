@@ -1,0 +1,128 @@
+[
+    {
+        "client_msg_id": "46662a55-559a-43a4-a955-0396cb211bf5",
+        "type": "message",
+        "text": "Did we still want to meet with the lecturer? If so can we do it after class as I have a doctor's appointment at 8am that morning.",
+        "user": "UNCN6EKTN",
+        "ts": "1569401076.002300",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "a00d2194ec06",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2019-09-16\/763429704870_a00d2194ec068508db7c_72.jpg",
+            "first_name": "Sean",
+            "real_name": "Sean Lennon",
+            "display_name": "Sean",
+            "team": "TMZPFSQ7M",
+            "name": "seanlennon97",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "0df71da5-fca8-4d89-b0cd-9e61cb13232d",
+        "type": "message",
+        "text": "We were going to try meet him tomorrow afternoon weren't we?",
+        "user": "UN4MQMQQ3",
+        "ts": "1569401125.002900",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "g617526394b3",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/1617526394b3a1ca553ef7f50798190b.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0018-72.png",
+            "first_name": "",
+            "real_name": "Jeremy Marelich",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "jdvmarelich",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "4633E8E9-ABAA-4521-A141-4BF09B73B42F",
+        "type": "message",
+        "text": "Yeah can we aim for tomorrow afternoon? I can send him an email today ",
+        "user": "UNB7UAWU8",
+        "ts": "1569403477.000800",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gbab34c953a4",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/8bab34c953a420a58e48e212dcdb7cd3.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0007-72.png",
+            "first_name": "Alexander",
+            "real_name": "Alexander Holstrup",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "alexanderholstrup",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "be471e29-f5d9-47ae-9d17-acc1210e2e26",
+        "type": "message",
+        "text": "Works for me:ok_hand::skin-tone-3:",
+        "user": "UNCN6EKTN",
+        "ts": "1569403661.001200",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "a00d2194ec06",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2019-09-16\/763429704870_a00d2194ec068508db7c_72.jpg",
+            "first_name": "Sean",
+            "real_name": "Sean Lennon",
+            "display_name": "Sean",
+            "team": "TMZPFSQ7M",
+            "name": "seanlennon97",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "51fadb35-109a-46cb-bfec-59f8488d8609",
+        "type": "message",
+        "text": "Yep easy, what time do we want to meet?",
+        "user": "UN4MQMQQ3",
+        "ts": "1569404032.001600",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "g617526394b3",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/1617526394b3a1ca553ef7f50798190b.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0018-72.png",
+            "first_name": "",
+            "real_name": "Jeremy Marelich",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "jdvmarelich",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "83180F89-C69B-4C9B-BE2E-DE6C1ABCD7A0",
+        "type": "message",
+        "text": "I’ll have to work tomorrow. The earliest I can do is 5pm :confused:",
+        "user": "UNF9PQFMK",
+        "ts": "1569445361.000700",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gc025267db44",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/7c025267db448215e02400be1b1f1387.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0025-72.png",
+            "first_name": "",
+            "real_name": "Bosse Bandowski",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "bosse.bandowski",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    }
+]

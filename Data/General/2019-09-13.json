@@ -1,0 +1,55 @@
+[
+    {
+        "user": "UNB7UAWU8",
+        "type": "message",
+        "subtype": "channel_join",
+        "ts": "1568373624.000200",
+        "text": "<@UNB7UAWU8> has joined the channel"
+    },
+    {
+        "client_msg_id": "da699299-33a1-45bc-84a3-c2d0162c2159",
+        "type": "message",
+        "text": "Hey guys!\nWelcome to the Slack. So over the next week we need to:\n1. Brainstorm and pick out 1 or 2 projects out that we think could be interesting to work with\n2. Prepare a little presentation for next Friday\n\nHow do we get there?\nI propose we make a Google Docs, write 1 or 2 ideas each over the weekend, and then at the beginning of next week, we can discuss which idea to go with. How does that sound?\n\nIn terms of the domain of the project we’ll work with, I really liked the idea of working with some electrical car technologies\/modeling, since two of our group members are also doing a Blue Dot project in this. But I’m open for other types of projects as well. Any thoughts?",
+        "user": "UNB7UAWU8",
+        "ts": "1568375521.000700",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gbab34c953a4",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/8bab34c953a420a58e48e212dcdb7cd3.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0007-72.png",
+            "first_name": "Alexander",
+            "real_name": "Alexander Holstrup",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "alexanderholstrup",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "526f2f24-7421-4cdd-8668-98b23ac12857",
+        "type": "message",
+        "text": "Here’s a little collection of links, that will probably be useful for the project work.\n* <http:\/\/dtu.cnwiki.dk\/02223e19\/>\n* <https:\/\/trello.com\/invite\/b\/hQC7ukwR\/add96851e9935144c2c2c394a649173a\/model-based-systems-engineering>\n* <https:\/\/docs.google.com\/document\/d\/1c4fsPalei_W0Heei41-yvt2ZxWiB0tJgVdGNgs1GSL4\/edit?usp=sharing>",
+        "user": "UNB7UAWU8",
+        "ts": "1568375536.000900",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gbab34c953a4",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/8bab34c953a420a58e48e212dcdb7cd3.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0007-72.png",
+            "first_name": "Alexander",
+            "real_name": "Alexander Holstrup",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "alexanderholstrup",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "edited": {
+            "user": "UNB7UAWU8",
+            "ts": "1568375632.000000"
+        }
+    }
+]

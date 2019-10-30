@@ -1,0 +1,359 @@
+[
+    {
+        "client_msg_id": "742adc10-719d-4238-9ab1-ccb6d608243e",
+        "type": "message",
+        "text": "Me and Lasse can meet around 1.30 pm",
+        "user": "UNB7UAWU8",
+        "ts": "1569487379.000700",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gbab34c953a4",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/8bab34c953a420a58e48e212dcdb7cd3.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0007-72.png",
+            "first_name": "Alexander",
+            "real_name": "Alexander Holstrup",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "alexanderholstrup",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "89ccc06d-f35c-48dd-8281-0745cb343e83",
+        "type": "message",
+        "text": "So we still keen to meet even without the professor, what do we want to discuss?",
+        "user": "UN4MQMQQ3",
+        "ts": "1569492500.000900",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "g617526394b3",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/1617526394b3a1ca553ef7f50798190b.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0018-72.png",
+            "first_name": "",
+            "real_name": "Jeremy Marelich",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "jdvmarelich",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "14502695-B1DA-40A1-A96C-F984AF2FCF51",
+        "type": "message",
+        "text": "Just how we develop the idea a bit. Wanna send him our ideas on email later today so he can read through them ",
+        "user": "UNB7UAWU8",
+        "ts": "1569494691.000900",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gbab34c953a4",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/8bab34c953a420a58e48e212dcdb7cd3.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0007-72.png",
+            "first_name": "Alexander",
+            "real_name": "Alexander Holstrup",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "alexanderholstrup",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "c472dd3c-3792-4d43-92da-a8f7ebe0de61",
+        "type": "message",
+        "text": "Easy, same spot?",
+        "user": "UN4MQMQQ3",
+        "ts": "1569494723.001300",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "g617526394b3",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/1617526394b3a1ca553ef7f50798190b.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0018-72.png",
+            "first_name": "",
+            "real_name": "Jeremy Marelich",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "jdvmarelich",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "90d58733-f90d-47c6-b3f9-763fce61e390",
+        "type": "message",
+        "text": "Yes if that's easiest. Alex and I are sitting in 352 right now but can go to 324 to meet you",
+        "user": "UNEUUMY0N",
+        "ts": "1569495042.002100",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "g6c9c4ffc33b",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/46c9c4ffc33b1445ea01e5363a6b6116.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0012-72.png",
+            "first_name": "",
+            "real_name": "Lasse",
+            "display_name": "Lasse",
+            "team": "TMZPFSQ7M",
+            "name": "lasse",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "295f685b-80f2-4816-a340-a67e7014cdd5",
+        "type": "message",
+        "text": "Yeah 324 is best for me if that's g with you guys",
+        "user": "UNCN6EKTN",
+        "ts": "1569495607.002900",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "a00d2194ec06",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2019-09-16\/763429704870_a00d2194ec068508db7c_72.jpg",
+            "first_name": "Sean",
+            "real_name": "Sean Lennon",
+            "display_name": "Sean",
+            "team": "TMZPFSQ7M",
+            "name": "seanlennon97",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "5F8D86AF-4DFE-4071-A3CF-C846B804EB2E",
+        "type": "message",
+        "text": "Yeah no problem. We’ll see you there in half an hour",
+        "user": "UNB7UAWU8",
+        "ts": "1569495640.003400",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gbab34c953a4",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/8bab34c953a420a58e48e212dcdb7cd3.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0007-72.png",
+            "first_name": "Alexander",
+            "real_name": "Alexander Holstrup",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "alexanderholstrup",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "d7ef007c-a33b-4be1-b45c-19022f39bab0",
+        "type": "message",
+        "text": "We're upstairs in a booth",
+        "user": "UNCN6EKTN",
+        "ts": "1569497377.003900",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "a00d2194ec06",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2019-09-16\/763429704870_a00d2194ec068508db7c_72.jpg",
+            "first_name": "Sean",
+            "real_name": "Sean Lennon",
+            "display_name": "Sean",
+            "team": "TMZPFSQ7M",
+            "name": "seanlennon97",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "76301b1e-7e68-4414-8408-03380f3d61f5",
+        "type": "message",
+        "text": "1st floor",
+        "user": "UN4MQMQQ3",
+        "ts": "1569497390.004100",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "g617526394b3",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/1617526394b3a1ca553ef7f50798190b.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0018-72.png",
+            "first_name": "",
+            "real_name": "Jeremy Marelich",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "jdvmarelich",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "21832E15-CDC5-49D1-999D-20F0AE255458",
+        "type": "message",
+        "text": "Don’t think we’re allowed to sit there",
+        "user": "UNB7UAWU8",
+        "ts": "1569497560.004600",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gbab34c953a4",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/8bab34c953a420a58e48e212dcdb7cd3.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0007-72.png",
+            "first_name": "Alexander",
+            "real_name": "Alexander Holstrup",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "alexanderholstrup",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "8E971AA4-5C3F-4F5A-A305-5648F55EF9B3",
+        "type": "message",
+        "text": "They usually kick you out ",
+        "user": "UNB7UAWU8",
+        "ts": "1569497569.004900",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gbab34c953a4",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/8bab34c953a420a58e48e212dcdb7cd3.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0007-72.png",
+            "first_name": "Alexander",
+            "real_name": "Alexander Holstrup",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "alexanderholstrup",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "E731E1DB-D2FB-41E1-8A09-C119393793B6",
+        "type": "message",
+        "text": "We’re downstairs now ",
+        "user": "UNB7UAWU8",
+        "ts": "1569497577.005200",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gbab34c953a4",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/8bab34c953a420a58e48e212dcdb7cd3.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0007-72.png",
+            "first_name": "Alexander",
+            "real_name": "Alexander Holstrup",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "alexanderholstrup",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "6FE8FA29-0EFA-40A4-A4E3-6A7D6AAE6582",
+        "type": "message",
+        "text": "What’s the vibe, boys? Is there anything to do until tomorrow? Does it make sense to come to university now?",
+        "user": "UNF9PQFMK",
+        "ts": "1569503665.006200",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gc025267db44",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/7c025267db448215e02400be1b1f1387.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0025-72.png",
+            "first_name": "",
+            "real_name": "Bosse Bandowski",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "bosse.bandowski",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "cb0a8472-679c-4168-bd4e-92e43ab5fd06",
+        "type": "message",
+        "text": "Think we're gonna go with the intersection idea instead",
+        "user": "UN4MQMQQ3",
+        "ts": "1569504026.006900",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "g617526394b3",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/1617526394b3a1ca553ef7f50798190b.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0018-72.png",
+            "first_name": "",
+            "real_name": "Jeremy Marelich",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "jdvmarelich",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "8c67e004-55bf-4421-b2b9-cefe6a3727da",
+        "type": "message",
+        "text": "Couldnt come up with any good ideas as to how to improve the NOThole",
+        "user": "UN4MQMQQ3",
+        "ts": "1569504043.007600",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "g617526394b3",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/1617526394b3a1ca553ef7f50798190b.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0018-72.png",
+            "first_name": "",
+            "real_name": "Jeremy Marelich",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "jdvmarelich",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "B279E0DF-63B6-468E-B5A5-E7C5511F2F64",
+        "type": "message",
+        "text": "I see",
+        "user": "UNF9PQFMK",
+        "ts": "1569504054.007800",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "gc025267db44",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/7c025267db448215e02400be1b1f1387.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0025-72.png",
+            "first_name": "",
+            "real_name": "Bosse Bandowski",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "bosse.bandowski",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    },
+    {
+        "client_msg_id": "6d90ebe1-4de0-4a78-a7a2-9eab2bd6041d",
+        "type": "message",
+        "text": "Hey guys, have got like 30mins sleep in the past 6hrs of being in bed. Think im gonna learn Edwards shit lecture from the slides at home :(",
+        "user": "UN4MQMQQ3",
+        "ts": "1569554680.002300",
+        "team": "TMZPFSQ7M",
+        "user_team": "TMZPFSQ7M",
+        "source_team": "TMZPFSQ7M",
+        "user_profile": {
+            "avatar_hash": "g617526394b3",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/1617526394b3a1ca553ef7f50798190b.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2F80588%2Fimg%2Favatars%2Fuser_shapes%2Fava_0018-72.png",
+            "first_name": "",
+            "real_name": "Jeremy Marelich",
+            "display_name": "",
+            "team": "TMZPFSQ7M",
+            "name": "jdvmarelich",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        }
+    }
+]

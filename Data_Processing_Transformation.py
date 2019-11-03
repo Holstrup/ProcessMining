@@ -2,7 +2,9 @@ import random
 import os
 import json
 import xml.etree.ElementTree as ET
-
+from pm4py.objects.log.exporter.xes import factory as xes_exporter
+from pm4py.objects.log.importer.xes import factory as xes_import_factory
+from pm4py.objects.log.util.log import log as pmlog
 
 class Data_Processing_Transformation:
     def __init__(self, path_name):
@@ -11,7 +13,18 @@ class Data_Processing_Transformation:
 
         # Run Pipeline
         self.extraction()
-        self.transformation()
+        log = self.transformation()
+        xes_exporter.export_log(log, "exportedLog.xes")
+        print(log)
+
+        #print("\n")
+        #log1 = xes_import_factory.apply("extension-log.xes")
+        #print(log1[0])
+        #print(log1[0][0])
+
+        print("\n")
+
+
 
 
     def extraction(self):
@@ -29,12 +42,8 @@ class Data_Processing_Transformation:
     def transformation(self):
         ts_start = 0.0
         convo_id = 0
-        root = ET.Element('log')
-        # <log xes.version="1.0" xes.features="nested-attributes" openxes.version="1.0RC7" xmlns="http://www.xes-standard.org/">
-        root.set("xes.version", "1.0")
-        root.set("xes.features", "nested-attributes")
-        root.set("openxes.version", "1.0RC7")
-        root.set("xmlns", "http://www.xes-standard.org/")
+        log = pmlog.EventLog()
+
 
         for message in self.data:
             if 'subtype' in message.keys():
@@ -43,65 +52,30 @@ class Data_Processing_Transformation:
                 message['classification'] = self.classification(message['text'])
                 if ts_start == 0:
                     ts_start = float(message['ts'])
-                    ConversationElement = ET.SubElement(root, "trace")
-                    ConversationElement.tail = "\n"  # Edit the element's tail
-                    ConversationElement.text = ""
-
-                    caseIdElement = ET.SubElement(ConversationElement, "string")
-                    caseIdElement.set("key", "id")
-                    caseIdElement.set("value", str(convo_id))
-                    caseIdElement.tail = "\n"  # Edit the element's tail
-                    caseIdElement.text = ""
+                    trace = pmlog.Trace()
+                    event = pmlog.Event()
 
                 elif abs(ts_start - float(message['ts'])) > 5500.0: # Split roughly every 1,5 hours
-                    convo_id += 1
+                    log.append(trace)
+
+                    #convo_id += 1
                     ts_start = float(message['ts'])
-
-                    ConversationElement = ET.SubElement(root, "trace")
-                    ConversationElement.tail = "\n"  # Edit the element's tail
-                    ConversationElement.text = ""
-
-                    caseIdElement = ET.SubElement(ConversationElement, "string")
-                    caseIdElement.set("key", "id")
-                    caseIdElement.set("value", str(convo_id))
-                    caseIdElement.tail = "\n"  # Edit the element's tail
-                    caseIdElement.text = ""
-
-                MessageElement = ET.SubElement(ConversationElement, "event")
-                nameElement = ET.SubElement(MessageElement, "string")
-
-                nameElement.set("key", "name")
-                nameElement.set("value", message['user_profile']['real_name'])
-                nameElement.tail = "\n"  # Edit the element's tail
-                nameElement.text = ""
-
-                nameElement = ET.SubElement(MessageElement, "string")
-
-                nameElement.set("key", "message_content")
-                nameElement.set("value", message['text'])
-                nameElement.tail = "\n"  # Edit the element's tail
-                nameElement.text = ""
-
-                nameElement = ET.SubElement(MessageElement, "string")
-
-                nameElement.set("key", "classification")
-                nameElement.set("value", message['classification'])
-                nameElement.tail = "\n"  # Edit the element's tail
-                nameElement.text = ""
-
-                nameElement = ET.SubElement(MessageElement, "date")
-
-                nameElement.set("key", "timestamp")
-                nameElement.set("value", message['ts'])
-                nameElement.tail = "\n"  # Edit the element's tail
-                nameElement.text = ""
-
-                MessageElement.tail = "\n"  # Edit the element's tail
-                MessageElement.text = "\n"  # Edit the element's tail
+                    trace = pmlog.Trace()
 
 
-        tree = ET.ElementTree(root)
-        tree.write("data.xes", encoding="UTF-8", xml_declaration=True)
+                case_dict = {}
+                case_dict["org:resource"] = message['user_profile']['real_name']
+                case_dict["text"] = message['text']
+                case_dict['concept:name'] = message['classification']
+                case_dict["time:timestamp"] = message['ts']
+
+                event = pmlog.Event(case_dict)
+                trace.append(event)
+        return log
+
+
+
+
 
     def classification(self, message):
         """

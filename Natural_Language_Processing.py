@@ -6,6 +6,9 @@ class NLP:
 
     def train_classifier(self):
         #trains a Naive bayes with known text from nltk data and classes like  ynQuestion, Statement,whQuestion
+        #nltk.download('punkt')
+        #nltk.download('nps_chat')
+
 
         posts = nltk.corpus.nps_chat.xml_posts()[:10000]
 

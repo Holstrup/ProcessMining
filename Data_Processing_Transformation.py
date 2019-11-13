@@ -32,6 +32,22 @@ class Data_Processing_Transformation:
         last_date = datetime.strptime("2015-02-01T00:00:00.000Z", '%Y-%m-%dT%H:%M:%S.%fZ')
         log = pmlog.EventLog()
         trace = pmlog.Trace()
+        p_dict = {}
+        class_dict =  {"Reject": "Answer",
+                       "Statement": "Question",
+                       "nAnswer" : "Answer",
+                       "Accept" : "Answer",
+                       "Emotion": "Other",
+                       "Continuer": "Clarification",
+                       "Clarify": "Clarification",
+                       "ynQuestion": "Question",
+                       "whQuestion": "Question",
+                       "Other": "Other",
+                       "Emphasis": "Clarification",
+                       "System": "Other",
+                       "Greet": "Other",
+                       "yAnswer": "Answer",
+                       "Bye": "Other"}
 
         break_loop = False
         for chunk in pd.read_csv(self.path_name, chunksize=chunksize, usecols = ["id", "fromUser.displayName", "text", "sent"]):
@@ -48,6 +64,10 @@ class Data_Processing_Transformation:
 
                 if index == 0:
                     prev_date = datetime_object.date()
+                    prev_event = str(nlp_class.get_class())
+                    prev_prev_event = str(nlp_class.get_class())
+                    continue
+
                 elif datetime_object.date() > prev_date:
                     prev_date = datetime_object.date()
                     log.append(trace)
@@ -58,6 +78,7 @@ class Data_Processing_Transformation:
                     break
 
                 try:
+                    """
                     case_dict = {}
                     #case_dict["org:resource"] = row["fromUser.displayName"]
                     case_dict["org:resource"] = str(nlp_class.get_class())
@@ -68,12 +89,30 @@ class Data_Processing_Transformation:
 
                     event = pmlog.Event(case_dict)
                     trace.append(event)
+                    """
+                    event = class_dict[str(nlp_class.get_class())]
+
+                    print(str(nlp_class.get_class()) + " : " + row["text"])
+
+                    pattern = prev_prev_event + prev_event + event
+                    if pattern in p_dict:
+                        p_dict[pattern] += 1
+                    else:
+                        p_dict[pattern] = 1
+
+                    prev_prev_event = prev_event
+                    prev_event = event
 
                 except TypeError:
                     continue
 
             print(row["sent"])
         log.append(trace)
+
+
+        for key in p_dict.keys():
+            if p_dict[key] > 900:
+                print(key, p_dict[key])
         return log
 
 

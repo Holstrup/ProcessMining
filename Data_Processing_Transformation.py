@@ -8,22 +8,36 @@ from pm4py.objects.log.util.log import log as pmlog
 from Natural_Language_Processing import NLP
 import pandas as pd
 from datetime import datetime
+from DataPreprocessing import rm_code
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+import nltk
+#nltk.download('vader_lexicon')
+
 
 class Data_Processing_Transformation:
     def __init__(self, path_name, social_graph):
+        self.sid = SentimentIntensityAnalyzer()
         self.path_name = path_name             # Slack filename
         self.log_file_name = "SlackDataLog.xes"
         self.social_graph = social_graph
 
         # Run Pipeline
         log = self.kaggle_extract()
-        #xes_exporter.export_log(log, "GitterLogSocial.xes")
+        xes_exporter.export_log(log, "GitterLog.xes")
 
 
         #self.extraction()
         #log = self.transformation()
         #xes_exporter.export_log(log, self.log_file_name)
 
+    def sentiment(self, message):
+        ss = self.sid.polarity_scores(message)
+        if ss["compound"] == 0.0:
+            return "neutral"
+        elif ss["compound"] > 0.0:
+            return "positive"
+        else:
+            return "negative"
 
 
     def kaggle_extract(self):
@@ -32,7 +46,8 @@ class Data_Processing_Transformation:
         last_date = datetime.strptime("2015-02-01T00:00:00.000Z", '%Y-%m-%dT%H:%M:%S.%fZ')
         log = pmlog.EventLog()
         trace = pmlog.Trace()
-        p_dict = {}
+        q_num = 0
+        q_dict = {}
         class_dict =  {"Reject": "Answer",
                        "Statement": "Question",
                        "nAnswer" : "Answer",
@@ -55,64 +70,73 @@ class Data_Processing_Transformation:
                 break
 
             for index, row in chunk.iterrows():
-                nlp_class.set_sentence(row['text'])
+
                 date_string = row["sent"]
                 datetime_object = datetime.strptime(date_string, '%Y-%m-%dT%H:%M:%S.%fZ')
 
+                # Sometimes the diplayname is nan -> causes errors in disco if not caught
                 if row["fromUser.displayName"] == "nan":
                     print(index)
-
-                if index == 0:
-                    prev_date = datetime_object.date()
-                    prev_event = str(nlp_class.get_class())
-                    prev_prev_event = str(nlp_class.get_class())
                     continue
 
-                elif datetime_object.date() > prev_date:
-                    prev_date = datetime_object.date()
-                    log.append(trace)
-                    trace = pmlog.Trace()
-
+                    # Terminate at some date
                 if datetime_object > last_date:
                     break_loop = True
                     break
 
                 try:
-                    """
+                    text = rm_code(row['text'])
+                    nlp_class.set_sentence(text)
+                    classification = class_dict[str(nlp_class.get_class())]
+                    name = row["fromUser.displayName"]
+
                     case_dict = {}
-                    #case_dict["org:resource"] = row["fromUser.displayName"]
-                    case_dict["org:resource"] = str(nlp_class.get_class())
-                    #case_dict['concept:name'] = str(nlp_class.get_class())
-                    case_dict['concept:name'] = row["fromUser.displayName"]
+                    case_dict["org:resource"] = name
+                    case_dict['concept:name']= classification
+                    case_dict["time:timestamp"] = datetime_object
+                    case_dict["sentiment"] = self.sentiment(row["text"])
 
-                    case_dict["time:timestamp"] = date_string
+                    #case_dict['concept:name'] = name
+                    #case_dict["org:resource"] = classification
 
-                    event = pmlog.Event(case_dict)
-                    trace.append(event)
-                    """
-                    event = class_dict[str(nlp_class.get_class())]
+                    if len(q_dict.keys()) == 0 and classification != "Question":
+                        continue
 
-                    print(str(nlp_class.get_class()) + " : " + row["text"])
+                    if classification == "Question":
+                        q_dict[q_num] = [case_dict]
+                        q_num += 1
+                    elif classification == "Answer":
+                        case = q_dict[min(q_dict.keys())]
+                        case.append(case_dict)
+                        # Write to log
+                        trace = pmlog.Trace()
+                        for event in case:
+                            ev = pmlog.Event(event)
+                            trace.append(ev)
+                        log.append(trace)
 
-                    pattern = prev_prev_event + prev_event + event
-                    if pattern in p_dict:
-                        p_dict[pattern] += 1
+                        # Delete
+                        del q_dict[min(q_dict.keys())]
+
                     else:
-                        p_dict[pattern] = 1
+                        delete_keys = []
+                        for key in q_dict.keys():
+                            q_dict[key].append(case_dict)
 
-                    prev_prev_event = prev_event
-                    prev_event = event
+                            if len(q_dict[key]) >= 10:
+                                delete_keys.append(key)
+
+                        for key in delete_keys:
+                            trace = pmlog.Trace()
+                            for event in q_dict[key]:
+                                ev = pmlog.Event(event)
+                                trace.append(ev)
+                            log.append(trace)
+                            del q_dict[key]
 
                 except TypeError:
                     continue
-
-            print(row["sent"])
-        log.append(trace)
-
-
-        for key in p_dict.keys():
-            if p_dict[key] > 900:
-                print(key, p_dict[key])
+            print(row["sent"], len(q_dict.keys()))
         return log
 
 

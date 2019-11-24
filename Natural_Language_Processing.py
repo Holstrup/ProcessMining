@@ -1,16 +1,29 @@
 import nltk
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 class NLP:
     def __init__(self):
+        self.sid = SentimentIntensityAnalyzer()
         self.train_classifier()
+        self.class_mappings =  {"Reject": "Answer",
+                       "Statement": "Question",
+                       "nAnswer" : "Answer",
+                       "Accept" : "Answer",
+                       "Emotion": "Other",
+                       "Continuer": "Clarification",
+                       "Clarify": "Clarification",
+                       "ynQuestion": "Question",
+                       "whQuestion": "Question",
+                       "Other": "Other",
+                       "Emphasis": "Clarification",
+                       "System": "Other",
+                       "Greet": "Other",
+                       "yAnswer": "Answer",
+                       "Bye": "Other"}
 
     def train_classifier(self):
-        #trains a Naive bayes with known text from nltk data and classes like  ynQuestion, Statement,whQuestion
-        #nltk.download('punkt')
-        #nltk.download('nps_chat')
-
-
-        posts = nltk.corpus.nps_chat.xml_posts()[:10000]
+        print(len(nltk.corpus.nps_chat.xml_posts()))
+        posts = nltk.corpus.nps_chat.xml_posts()
 
         featuresets = [(self.dialogue_act_features(post.text), post.get('class')) for post in posts]
         self.classifier = nltk.NaiveBayesClassifier.train(featuresets)
@@ -27,7 +40,8 @@ class NLP:
         #uses trained classifier to classify text
 
         new_featureset=self.dialogue_act_features(self.sentence)
-        return self.classifier.classify(new_featureset)
+        classification = str(self.classifier.classify(new_featureset))
+        return self.class_mappings[classification]
 
     def dialogue_act_features(self,post):
         features = {}
@@ -42,3 +56,12 @@ class NLP:
         tokens=self.tokenize()
 
         return nltk.pos_tag(tokens)
+
+    def sentiment(self, message):
+        ss = self.sid.polarity_scores(message)
+        if ss["compound"] == 0.0:
+            return "neutral"
+        elif ss["compound"] > 0.0:
+            return "positive"
+        else:
+            return "negative"

@@ -9,49 +9,22 @@ from Conversation import Conversation
 from pm4py.objects.log.util.log import log as pmlog
 from pm4py.objects.log.exporter.xes import factory as xes_exporter
 
-#nltk.download('stopwords')
-def kaggle_extract():
-    chunksize = 10 ** 3
-    last_date = datetime.strptime("2015-02-01T00:00:00.000Z", '%Y-%m-%dT%H:%M:%S.%fZ')
-    datetime_object = datetime.strptime("2015-01-01T00:00:00.000Z", '%Y-%m-%dT%H:%M:%S.%fZ')
-    break_loop = False
-    word_dict = {}
-    for chunk in pd.read_csv("Kaggle/chatroom.csv", chunksize=chunksize, usecols=["text", "sent"]):
-
-        # Terminate after late date, to trim dataset.
-        if datetime_object > last_date:
-            print(datetime_object)
-            break_loop = True
 
 
-        if break_loop:
-            break_loop = True
-            break
 
-        for index, row in chunk.iterrows():
-            try:
-                text = (row["text"]).strip()
-                text = text.lower()
-                text = rm_mentions(text)
-                text = rm_code(text)
-                text = rm_punctuation(text)
-                text = remove_stop_words(text)
-                text = text.split(" ")
+""" Hyper Parameters """
 
-                for word in text:
-                    if word not in word_dict:
-                        word_dict[word] = 0
-                    word_dict[word] += 1
+# Last date we want to mine to. E.g. 01/01 -> 02/01
+last_date = datetime.strptime("2015-04-01T00:00:00.000Z", '%Y-%m-%dT%H:%M:%S.%fZ')
 
-            except AttributeError:
-                continue
-        date_string = row["sent"]
-        datetime_object = datetime.strptime(date_string, '%Y-%m-%dT%H:%M:%S.%fZ')
-    del word_dict['']
-    print("No. Words: " + str(len(word_dict.keys())))
-    return word_dict
+# How long is a conversation active for? In minutes 
+conversation_duration = 15.0 # Minutes
+
+# Pandas chunk size
+chunksize = 10 ** 3
 
 
+""" Helper Functions """
 def rm_mentions(data):
     return " ".join(filter(lambda x: x[0] != '@', data.split()))
 
@@ -74,16 +47,62 @@ def remove_stop_words(data):
             new_text = new_text + " " + w
     return new_text
 
+def preprocess_text(text):
+    text = text.strip()
+    text = text.lower()
+    text = rm_mentions(text)
+    text = rm_code(text)
+    text = rm_punctuation(text)
+    text = remove_stop_words(text)
+    text = text.split(" ")
+    return text
+
+
+""" Main Functions """
+
+#nltk.download('stopwords')
+def kaggle_extract():
+    global chunksize
+    last_date = datetime.strptime("2015-06-01T00:00:00.000Z", '%Y-%m-%dT%H:%M:%S.%fZ')
+    datetime_object = datetime.strptime("2015-01-01T00:00:00.000Z", '%Y-%m-%dT%H:%M:%S.%fZ')
+    break_loop = False
+    word_dict = {}
+    for chunk in pd.read_csv("Kaggle/chatroom.csv", chunksize=chunksize, usecols=["text", "sent"]):
+
+        # Terminate after late date, to trim dataset.
+        if datetime_object > last_date:
+            print(datetime_object)
+            break_loop = True
+
+
+        if break_loop:
+            break_loop = True
+            break
+
+        for index, row in chunk.iterrows():
+            try:
+                text = preprocess_text(row["text"])
+
+                for word in text:
+                    if word not in word_dict:
+                        word_dict[word] = 0
+                    word_dict[word] += 1
+
+            except AttributeError:
+                continue
+        
+        date_string = row["sent"]
+        datetime_object = datetime.strptime(date_string, '%Y-%m-%dT%H:%M:%S.%fZ')
+    del word_dict['']
+    return word_dict
+
 def mine_conversations(word_dict):
+    global last_date, chunksize, conversation_duration 
     nlp_class = NLP()
-    chunksize = 10 ** 3
-    last_date = datetime.strptime("2015-02-01T00:00:00.000Z", '%Y-%m-%dT%H:%M:%S.%fZ')
     datetime_object = datetime.strptime("2015-01-01T00:00:00.000Z", '%Y-%m-%dT%H:%M:%S.%fZ')
     break_loop = False
     open_conversations = []
     log = pmlog.EventLog()
-    did_not_match = 0
-    matches = 0
     for chunk in pd.read_csv("Kaggle/chatroom.csv", chunksize=chunksize, usecols = ["id", "fromUser.displayName", "text", "sent", "fromUser.username"]):
         # Terminate after late date, to trim dataset.
         if datetime_object > last_date:
@@ -103,18 +122,25 @@ def mine_conversations(word_dict):
                 nlp_class.set_sentence(rm_code(text))
                 classification = nlp_class.get_class()
                 datetime_object = datetime.strptime(row["sent"], '%Y-%m-%dT%H:%M:%S.%fZ')
+                
+                
+                # Creating an event
+                event_dict = {}
+                #event_dict['concept:name'] = classification
+                #event_dict["org:resource"] = row["fromUser.displayName"]
 
-                case_dict = {}
-                case_dict['concept:name'] = classification
-                case_dict["org:resource"] = row["fromUser.displayName"]
+                event_dict['concept:name'] = row["fromUser.displayName"]
+                event_dict["org:resource"] = classification
 
-                """ For Social Graph
-                case_dict['concept:name'] = row["fromUser.displayName"]
-                case_dict["org:resource"] = classification
-                """
+                event_dict["time:timestamp"] = datetime_object
+                event = pmlog.Event(event_dict)
 
-                case_dict["time:timestamp"] = datetime_object
-                event = pmlog.Event(case_dict)
+                for conversation in open_conversations:
+                    time_diff = (datetime_object - conversation.open_time).total_seconds() / 60.0
+                    if time_diff > conversation_duration:
+                        log.append(conversation.add_to_trace())
+                        conversation.write_to_txt()
+                        open_conversations.remove(conversation)
 
 
                 # Now we find our text body
@@ -135,13 +161,14 @@ def mine_conversations(word_dict):
                                 break
 
                     # If question -> Make a new conversation
-                    elif classification == "Question":
-                        convo = Conversation(text_body=text_body, open_time=datetime_object,
-                                             event=event, message_text=row["text"], person=row["id"])
-                        open_conversations.append(convo)
+
+                    #elif classification == "Question":
+                    #    convo = Conversation(text_body=text_body, open_time=datetime_object,
+                    #                         event=event, message_text=row["text"], person=row["id"])
+                    #    open_conversations.append(convo)
 
 
-                    elif not mention_added and classification != "Question":
+                    elif not mention_added:
                         # Find the best matching conversation
                         score = 0
                         best_matching_conversation = None
@@ -152,24 +179,21 @@ def mine_conversations(word_dict):
                                 best_matching_conversation = conversation
 
                         if best_matching_conversation != None:
-                            matches += 1
                             best_matching_conversation.add_message(text_body, event,
                                                                    message_text=row["text"], person=row["fromUser.username"])
-                        else:
-                            did_not_match += 1
 
-                    for conversation in open_conversations:
-                        time_diff = (datetime_object - conversation.open_time).total_seconds() / 60.0
-                        if time_diff > 15.0: #minutes
-                            log.append(conversation.add_to_trace())
-                            conversation.write_to_txt()
-                            open_conversations.remove(conversation)
-                print(len(open_conversations))
+                        else:
+                            convo = Conversation(text_body=text_body, open_time=datetime_object,
+                                                 event=event, message_text=row["text"], person=row["id"])
+                            open_conversations.append(convo)
+
+                print("Currently " + str(len(open_conversations)) + " open conversations")
             except AttributeError:
                 continue
     return log
 
 
 word_dict = kaggle_extract()
+print("No. Words: " + str(len(word_dict.keys())))
 log = mine_conversations(word_dict)
 xes_exporter.export_log(log, "Mined_Conversations_w_mentions.xes")

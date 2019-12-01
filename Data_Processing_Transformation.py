@@ -7,27 +7,28 @@ from Natural_Language_Processing import NLP
 import pandas as pd
 from datetime import datetime
 from DataPreprocessing import rm_code
+import time
 
 
 class Data_Processing_Transformation:
     def __init__(self, path_name, social_graph, kaggle):
         self.nlp_class = NLP()
 
-
         """ Parameters """
         self.path_name = path_name             # Slack filename
-        self.log_file_name = "LogData.xes"
         self.social_graph = social_graph
         self.chunk_size = 10 ** 3
-        self.last_date = datetime.strptime("2015-03-01T00:00:00.000Z", '%Y-%m-%dT%H:%M:%S.%fZ')
+        self.last_date = datetime.strptime("2015-04-01T00:00:00.000Z", '%Y-%m-%dT%H:%M:%S.%fZ')
 
 
         """ Pipelines """
         if kaggle:
+            self.log_file_name = "KaggleLogData.xes"
             log = self.kaggle_extract()
             xes_exporter.export_log(log, self.log_file_name)
 
         else:
+            self.log_file_name = "SlackLogData.xes"
             self.extraction()
             log = self.transformation()
             xes_exporter.export_log(log, self.log_file_name)
@@ -44,7 +45,7 @@ class Data_Processing_Transformation:
         for chunk in pd.read_csv(self.path_name, chunksize=self.chunk_size, usecols = ["id", "fromUser.displayName", "text", "sent"]):
             if break_loop:
                 break
-
+            
             for index, row in chunk.iterrows():
 
                 date_string = row["sent"]
@@ -67,10 +68,14 @@ class Data_Processing_Transformation:
                     name = row["fromUser.displayName"]
 
                     case_dict = {}
-                    case_dict["org:resource"] = name
-                    case_dict['concept:name']= classification
+                    if not self.social_graph:
+                        case_dict["org:resource"] = name
+                        case_dict['concept:name'] = classification
+                    else:
+                        case_dict['concept:name']  = classification
+                        case_dict["org:resource"] = name
+
                     case_dict["time:timestamp"] = datetime_object
-                    case_dict["sentiment"] = self.nlp_class.sentiment(row["text"])
 
                     
                     # Base case: When Question Dict is empty and we don't have a question
@@ -147,7 +152,7 @@ class Data_Processing_Transformation:
                     trace = pmlog.Trace()
                     event = pmlog.Event()
 
-                elif abs(ts_start - float(message['ts'])) > 10000.0: #5500.0: # Split roughly every 1,5 hours
+                elif abs(ts_start - float(message['ts'])) > 5500.0: #5500.0: # Split roughly every 1,5 hours
                     log.append(trace)
 
                     #convo_id += 1
@@ -168,7 +173,9 @@ class Data_Processing_Transformation:
 
 
                     case_dict["text"] = message['text']
-                    case_dict["time:timestamp"] = message['ts']
+                    real_time = time.strftime('%Y-%m-%dT%H:%M:%S',  time.gmtime(float(message['ts'])))
+                    real_time = datetime.strptime(real_time, '%Y-%m-%dT%H:%M:%S')
+                    case_dict["time:timestamp"] = real_time
 
 
                     event = pmlog.Event(case_dict)

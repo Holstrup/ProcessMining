@@ -45,6 +45,8 @@ class Conversation:
         convotext = open(filename, append_write)
         for message in self.message_texts:
             convotext.write("- " + message + "\n")
+
+        convotext.write("Keywords: " + str(self.text_body.keys()) + "\n")
         convotext.write("-----\n")
         convotext.close()
 

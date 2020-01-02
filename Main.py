@@ -22,10 +22,10 @@ if __name__ == '__main__':
 
 
     """ Runner Code """
-    tf_idf = Kaggle_IDF(chunksize, stop_datetime, "Data/Kaggle/chatroom.csv")
+    idf = Kaggle_IDF(chunksize, stop_datetime, "Data/Kaggle/chatroom.csv")
 
     #word_dict = Kaggle_TF(chunksize, stop_datetime, "Data/Kaggle/chatroom.csv")
     print("Done mining words")
-    log = mine_conversations(tf_idf, "Data/Kaggle/chatroom.csv", stop_datetime, chunksize, conversation_duration)
+    log = mine_conversations(idf, "Data/Kaggle/chatroom.csv", stop_datetime, chunksize, conversation_duration)
     print("Done mining conversations")
     xes_exporter.export_log(log, "Mined_Conversations_Kaggle.xes")

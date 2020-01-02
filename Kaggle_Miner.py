@@ -9,7 +9,7 @@ import Text_Preprocessing as TP
 """ Main Functions """
 
 
-def mine_conversations(tf_idf, csv_file_path, stop_datetime, chunksize, conversation_duration):
+def mine_conversations(idf, csv_file_path, stop_datetime, chunksize, conversation_duration):
     nlp_class = NLP()
     datetime_object = datetime.strptime("2015-01-01T00:00:00.000Z", '%Y-%m-%dT%H:%M:%S.%fZ')
     break_loop = False
@@ -29,8 +29,13 @@ def mine_conversations(tf_idf, csv_file_path, stop_datetime, chunksize, conversa
             try:
                 # Start by getting the variables we need
                 text = row["text"]
+
+                if len(text.split(" ")) <= 5:
+                    continue
+
                 if str(text) == "nan":
                     continue
+
                 nlp_class.set_sentence(TP.rm_code(text))
                 classification = nlp_class.get_class()
                 datetime_object = datetime.strptime(row["sent"], '%Y-%m-%dT%H:%M:%S.%fZ')
@@ -54,8 +59,8 @@ def mine_conversations(tf_idf, csv_file_path, stop_datetime, chunksize, conversa
                 # Now we find our text body
                 text_body = {}
                 for word in text.split(" "):
-                    if word in tf_idf:
-                        text_body[word] = tf_idf[word]
+                    if word in idf:
+                        text_body[word] = idf[word]
 
 
 

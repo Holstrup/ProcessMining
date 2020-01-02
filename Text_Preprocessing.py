@@ -1,5 +1,6 @@
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
+from nltk.stem import PorterStemmer
 import re
 
 def rm_mentions(data):
@@ -23,6 +24,12 @@ def remove_stop_words(data):
             new_text = new_text + " " + w
     return new_text
 
+def stemming(data):
+    ps = PorterStemmer()
+    new_text = []
+    for word in data:
+        new_text.append(ps.stem(word))
+
 def preprocess_text(text):
     text = text.strip()
     text = text.lower()
@@ -31,4 +38,5 @@ def preprocess_text(text):
     text = rm_punctuation(text)
     text = remove_stop_words(text)
     text = text.split(" ")
+    text = stemming(text)
     return text

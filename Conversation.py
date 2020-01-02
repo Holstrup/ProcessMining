@@ -12,9 +12,12 @@ class Conversation:
 
     def similarity_score(self, message):
         score = 0
-        for word in message.split(" "):
+        message_listed = message.split(" ")
+        for word in set(message_listed):
+            words_in_message = len(message_listed)
+            term_freq = message_listed.count(word)
             if word in self.text_body.keys():
-                score += self.text_body[word]
+                score += (term_freq / words_in_message) * self.text_body[word]
         return score
 
 
@@ -45,6 +48,8 @@ class Conversation:
         convotext = open(filename, append_write)
         for message in self.message_texts:
             convotext.write("- " + message + "\n")
+
+        convotext.write("Keywords: " + str(self.text_body.keys()) + "\n")
         convotext.write("-----\n")
         convotext.close()
 

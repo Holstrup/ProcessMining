@@ -3,10 +3,10 @@ import json
 from pm4py.objects.log.exporter.xes import factory as xes_exporter
 from pm4py.objects.log.importer.xes import factory as xes_import_factory
 from pm4py.objects.log.util.log import log as pmlog
-from Natural_Language_Processing import NLP
+from NLP_Classification import NLP
 import pandas as pd
 from datetime import datetime
-from DataPreprocessing import rm_code
+from Text_Preprocessing import rm_code
 import time
 
 

@@ -125,6 +125,7 @@ class Data_Processing_Transformation:
 
 
 
+
     def extraction(self):
         directory = os.listdir(self.path_name)
         directory.sort()
@@ -183,6 +184,7 @@ class Data_Processing_Transformation:
                 except KeyError:
                     print("Keyerror: ", message)
         return log
+
 
 
 

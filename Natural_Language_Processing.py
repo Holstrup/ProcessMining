@@ -25,7 +25,9 @@ class NLP:
         print(len(nltk.corpus.nps_chat.xml_posts()))
         posts = nltk.corpus.nps_chat.xml_posts()
 
+
         featuresets = [(self.dialogue_act_features(post.text), post.get('class')) for post in posts]
+        print(featuresets)
         self.classifier = nltk.NaiveBayesClassifier.train(featuresets)
 
 

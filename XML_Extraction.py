@@ -1,19 +1,19 @@
 import xml.etree.ElementTree as ET
 
-class Extract_Data_to_log:
+class ExtractDataLog:
 
     def __init__(self,path):
         self.tree = ET.parse(path)
 
     def create_dict(self):
-        thread_dict={'Thread ID':0,'Posts':{}}
+        thread_dict={'Thread ID':0 ,'Posts':{}}
         root = self.tree.getroot()
 
         #Thread ID
         thread_dict['Thread ID'] = root[0].text
 
         #Absolute position
-        abs_pos=1
+        abs_pos = 1
 
         #initial post
         thread_dict['Posts'][abs_pos]={}

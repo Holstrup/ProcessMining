@@ -111,17 +111,21 @@ class MessageClassifier:
                 self.best_classifier_name = name
                 best_score = score
 
-    def predict_class(self,dataset):
+    def predict_class(self,dataset,csv_name=""):
 
         classes=[int(round(x)) for x in self.best_classifier.predict(dataset)]
 
+        if csv_name!="":
+            with open(csv_name, 'w') as f:
+                writer = csv.writer(f)
+                writer.writerow(["ID", "Class"])
+                writer.writerows(zip(dataset.index.values, classes))
+
+
+        return classes
 
 
 
-        with open('MSDialog_classes.csv', 'w') as f:
-            writer = csv.writer(f)
-            writer.writerow(["ID","Class"])
-            writer.writerows(zip(dataset.index.values, classes))
 
 
 

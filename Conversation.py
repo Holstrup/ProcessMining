@@ -1,33 +1,50 @@
 from pm4py.objects.log.util.log import log as pmlog
 import os
+import Text_Preprocessing as TP
+
 
 class Conversation:
-    def __init__(self, text_body, open_time, event, message_text, person):
-        self.text_body = text_body # Dict
+    def __init__(self, open_time, event, message_text, person, idf):
+        self.tf_idf = {} # Dict
         self.open_time = open_time # Datetime Object
         self.people = set({person})
         self.message_events = [event]
         self.message_texts = [message_text]
 
+        # Compute td-idf
+        self.compute_tfidf(idf)
 
-    def similarity_score(self, message):
+    def similarity_score(self, tf_idf_message):
         score = 0
-        message_listed = message.split(" ")
-        for word in set(message_listed):
-            words_in_message = len(message_listed)
-            term_freq = message_listed.count(word)
-            if word in self.text_body.keys():
-                score += (term_freq / words_in_message) * self.text_body[word]
+        for word in tf_idf_message.keys():
+            if word in self.tf_idf:
+                score += tf_idf_message[word] * self.tf_idf[word]
         return score
 
+    def compute_tfidf(self, idf):
+        tf = {"totalWords": 0}
+        self.tf_idf = {}
+        for message in self.message_texts:
+            message_list = TP.preprocess_text(message)
+            for word in message_list:
+                if word in idf and word in tf:
+                    tf[word] += 1
+                    tf["totalWords"] += 1
+                elif word in idf:
+                    tf[word] = 1
+                    tf["totalWords"] += 1
+        for word in tf.keys():
+            if word == "totalWords": continue
+            else: self.tf_idf[word] = (tf[word] / tf["totalWords"]) * idf[word]
 
-    def add_message(self, text_body, event, message_text, person):
-        for word in text_body.keys():
-            if word not in self.text_body:
-                self.text_body[word] = text_body[word]
+
+    def add_message(self, event, message_text, person, idf):
         self.message_events.append(event)
         self.message_texts.append(message_text)
         self.people.add(person)
+
+        # Recompute tf-idf
+        #self.compute_tfidf(idf)
         return None
 
 
@@ -49,7 +66,7 @@ class Conversation:
         for message in self.message_texts:
             convotext.write("- " + message + "\n")
 
-        convotext.write("Keywords: " + str(self.text_body.keys()) + "\n")
+        convotext.write("Keywords: " + str(self.tf_idf.keys()) + "\n")
         convotext.write("-----\n")
         convotext.close()
 

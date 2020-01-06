@@ -40,11 +40,17 @@ def mine_conversations(idf, csv_file_path, stop_datetime, chunksize, conversatio
                 datetime_object = datetime.strptime(row["sent"], '%Y-%m-%dT%H:%M:%S.%fZ')
 
 
-                # Creating an event
                 event_dict = {}
-                event_dict['concept:name'] = row["fromUser.displayName"]
-                event_dict["time:timestamp"] = datetime_object
-                event = pmlog.Event(event_dict)
+                event_dict["User id"] = row["fromUser.username"]
+                event_dict["Date"] = datetime_object
+                event_dict["Content"] = text
+                event_dict["Class"] = None
+
+                #event_dict['concept:name'] = row["fromUser.displayName"]
+                #event_dict["time:timestamp"] = datetime_object
+                # event = pmlog.Event(event_dict)
+
+
 
                 for conversation in open_conversations:
                     time_diff = (datetime_object - conversation.open_time).total_seconds() / 60.0
@@ -67,7 +73,7 @@ def mine_conversations(idf, csv_file_path, stop_datetime, chunksize, conversatio
                 if len(mention) > 0:
                     for conversation in open_conversations:
                         if conversation.is_person_in_conversation(mention[0][1:]):
-                            conversation.add_message(event, message_text=row["text"], person=row["fromUser.username"],
+                            conversation.add_message(event_dict, message_text=row["text"], person=row["fromUser.username"],
                                                      idf=idf)
 
                 else:
@@ -82,13 +88,13 @@ def mine_conversations(idf, csv_file_path, stop_datetime, chunksize, conversatio
 
                     if best_matching_conversation != None and score > 0.05:
                         score_stats.append(score)
-                        best_matching_conversation.add_message(event, message_text=row["text"],
+                        best_matching_conversation.add_message(event_dict, message_text=row["text"],
                                                                person=row["fromUser.username"],
                                                                idf=idf)
 
                     else:
                         convo = Conversation(open_time=datetime_object,
-                                                event=event, message_text=row["text"], person=row["id"], idf=idf)
+                                                event_dict=event_dict, message_text=row["text"], person=row["id"], idf=idf)
                         open_conversations.append(convo)
 
             except AttributeError as e:

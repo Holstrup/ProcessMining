@@ -15,6 +15,9 @@ def rm_code(data):
 def rm_punctuation(data):
     return re.sub(r'[^\w\s]', '', data)
 
+def rm_urls(data):
+    return re.sub(r'http\S+', '', data)
+
 def remove_stop_words(data):
     stop_words = stopwords.words('english')
     custom_stop_words = ["hello", "hi", "hey"]
@@ -41,5 +44,5 @@ def preprocess_text(text):
     text = rm_punctuation(text)
     text = remove_stop_words(text)
     text = text.split(" ")
-    text = stemming(text)
+    #text = stemming(text)
     return text

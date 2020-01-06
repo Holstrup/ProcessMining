@@ -5,6 +5,7 @@ import Text_Preprocessing as TP
 
 class Conversation:
     def __init__(self, open_time, event, message_text, person, idf):
+        # {'Thread ID': Str, Posts: {abs_pos(int): {'User id': Str, 'Date': Str, 'Content': Str, 'Class': Str}}
         self.tf_idf = {} # Dict
         self.open_time = open_time # Datetime Object
         self.people = set({person})

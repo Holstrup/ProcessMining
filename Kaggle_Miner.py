@@ -34,7 +34,7 @@ def mine_conversations(idf, csv_file_path, stop_datetime, chunksize, conversatio
                 if str(text) == "nan":
                     continue
 
-                if len(text.split(" ")) <= 7: # Filter out messages with less than n words
+                if len(text.split(" ")) <= 7: # Filter out messages with less than n wordsw
                     continue
 
                 datetime_object = datetime.strptime(row["sent"], '%Y-%m-%dT%H:%M:%S.%fZ')

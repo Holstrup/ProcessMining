@@ -1,6 +1,6 @@
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
-from nltk.stem import PorterStemmer
+from nltk.stem.snowball import SnowballStemmer
 import re
 
 def rm_mentions(data):
@@ -17,6 +17,8 @@ def rm_punctuation(data):
 
 def remove_stop_words(data):
     stop_words = stopwords.words('english')
+    custom_stop_words = ["hello", "hi", "hey"]
+    stop_words.extend(custom_stop_words)
     words = word_tokenize(str(data))
     new_text = ""
     for w in words:
@@ -25,10 +27,11 @@ def remove_stop_words(data):
     return new_text
 
 def stemming(data):
-    ps = PorterStemmer()
+    ps = SnowballStemmer("english")
     new_text = []
     for word in data:
         new_text.append(ps.stem(word))
+    return new_text
 
 def preprocess_text(text):
     text = text.strip()

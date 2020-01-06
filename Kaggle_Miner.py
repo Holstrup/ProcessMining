@@ -10,11 +10,11 @@ import Text_Preprocessing as TP
 
 
 def mine_conversations(idf, csv_file_path, stop_datetime, chunksize, conversation_duration):
-    nlp_class = NLP()
     datetime_object = datetime.strptime("2015-01-01T00:00:00.000Z", '%Y-%m-%dT%H:%M:%S.%fZ')
     break_loop = False
     open_conversations = []
     log = pmlog.EventLog()
+    score_stats = []
     for chunk in pd.read_csv(csv_file_path, chunksize=chunksize, usecols = ["id", "fromUser.displayName", "text", "sent", "fromUser.username"]):
         # Terminate after late date, to trim dataset.
         if datetime_object > stop_datetime:
@@ -26,74 +26,78 @@ def mine_conversations(idf, csv_file_path, stop_datetime, chunksize, conversatio
             break
 
         for index, row in chunk.iterrows():
+            #print("Currently " + str(len(open_conversations)) + " open conversations")
             try:
                 # Start by getting the variables we need
                 text = row["text"]
 
-                if len(text.split(" ")) <= 5:
-                    continue
-
                 if str(text) == "nan":
                     continue
 
-                nlp_class.set_sentence(TP.rm_code(text))
-                classification = nlp_class.get_class()
+                if len(text.split(" ")) <= 7: # Filter out messages with less than n words
+                    continue
+
                 datetime_object = datetime.strptime(row["sent"], '%Y-%m-%dT%H:%M:%S.%fZ')
 
 
                 # Creating an event
                 event_dict = {}
                 event_dict['concept:name'] = row["fromUser.displayName"]
-                event_dict["org:resource"] = classification
                 event_dict["time:timestamp"] = datetime_object
                 event = pmlog.Event(event_dict)
 
                 for conversation in open_conversations:
                     time_diff = (datetime_object - conversation.open_time).total_seconds() / 60.0
                     if time_diff > conversation_duration:
-                        log.append(conversation.add_to_trace())
-                        conversation.write_to_txt()
+                        if len(conversation.message_texts) > 1:
+                            log.append(conversation.add_to_trace())
+                            conversation.write_to_txt()
                         open_conversations.remove(conversation)
 
 
                 # Now we find our text body
-                text_body = {}
-                for word in text.split(" "):
+                tf_idf_message = {}
+                text_list = TP.preprocess_text(text)
+                for word in set(text_list):
                     if word in idf:
-                        text_body[word] = idf[word]
-
+                        tf_idf_message[word] = (text_list.count(word) / len(text_list)) * idf[word]
 
 
                 mention = TP.get_mentions(text)
-                mention_added = False
                 if len(mention) > 0:
                     for conversation in open_conversations:
                         if conversation.is_person_in_conversation(mention[0][1:]):
-                            conversation.add_message(text_body, event,
-                                                message_text=row["text"], person=row["fromUser.username"])
-                            mention_added = True
-                            break
+                            conversation.add_message(event, message_text=row["text"], person=row["fromUser.username"],
+                                                     idf=idf)
 
-                elif not mention_added:
+                else:
                     # Find the best matching conversation
                     score = 0
                     best_matching_conversation = None
                     for conversation in open_conversations:
-                        conversation_score = conversation.similarity_score(text)
+                        conversation_score = conversation.similarity_score(tf_idf_message)
                         if conversation_score > score:
                             score = conversation_score
                             best_matching_conversation = conversation
 
-                    if best_matching_conversation != None:
-                        best_matching_conversation.add_message(text_body, event,
-                                                            message_text=row["text"], person=row["fromUser.username"])
+                    if best_matching_conversation != None and score > 0.05:
+                        score_stats.append(score)
+                        best_matching_conversation.add_message(event, message_text=row["text"],
+                                                               person=row["fromUser.username"],
+                                                               idf=idf)
 
                     else:
-                        convo = Conversation(text_body=text_body, open_time=datetime_object,
-                                                event=event, message_text=row["text"], person=row["id"])
+                        convo = Conversation(open_time=datetime_object,
+                                                event=event, message_text=row["text"], person=row["id"], idf=idf)
                         open_conversations.append(convo)
 
-                print("Currently " + str(len(open_conversations)) + " open conversations")
-            except AttributeError:
+            except AttributeError as e:
+                print(e)
                 continue
+
+        print(datetime_object)
+    print(score_stats)
+    print(sum(score_stats) / len(score_stats))
+    print(min(score_stats))
+    print(max(score_stats))
     return log

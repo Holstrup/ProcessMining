@@ -25,7 +25,7 @@ if __name__ == '__main__':
     chunksize = 10 ** 3
 
     # Stop datetime
-    stop_datetime = datetime.strptime("2015-02-01T00:00:00.000Z", '%Y-%m-%dT%H:%M:%S.%fZ')
+    stop_datetime = datetime.strptime("2015-01-15T00:00:00.000Z", '%Y-%m-%dT%H:%M:%S.%fZ')
 
 
     """ Runner Code """

@@ -50,6 +50,9 @@ def get_test_dataframe(file):
     return dataframe
 
 
+    # Stop datetime
+    stop_datetime = datetime.strptime("2015-01-15T00:00:00.000Z", '%Y-%m-%dT%H:%M:%S.%fZ')
+
 if __name__ == '__main__':
     # test_dataframe = get_test_dataframe('MSDialog')
 

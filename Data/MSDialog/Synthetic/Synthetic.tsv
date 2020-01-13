@@ -1,0 +1,16 @@
+label	utterance	user-type
+Richard	OQ	how do i increase the size of an emoji in the conversation \? __eou__	User
+Steven	PA	hello richard , welcome to skype community forum it is my regret to inform you that there s no way for us to increase the size of emoji on skype please do not hesitate to reply to this thread if you need further help __eou__	Agent
+Richard	FD_PF	thank you it would seem that the emojis are bigger as long as you send them one by one __eou__	User
+
+Tyler	OQ	i am missing the morph transition from my 2016 powerpoint __eou__	User
+Benjamin	OQ	i was writing a letter in e mail and did not save it when i transfered to another application is it still available and how do i find it \? __eou__	User
+Suzanne	FD_PA	hi tyler , the morph transition feature in powerpoint is only available if you have an office 365 subscription if you are an office 365 subscriber , make sure you have the latest version of office for more details use the morph transition in powerpoint regards , yogasuzanne __eou__	Agent
+Veronica	PA	if you did n't save it while typing , it is probably gone for good windows 7 did not come with any email program , so while my reply is probably correct , knowing what you are using for email might make a difference __eou__	Agent
+Suzanne	CQ_IR	hi tyler , have my replies answered your question \? regards , yogasuzanne __eou__	Agent
+
+John	OQ	how do i get my neighborhood changed in bing \? __eou__	User
+Benjamin	PF	thank you veronica i appreciate your response __eou__	User
+
+Samantha	IR_PA	hi , bing maps depends on your current geographical location if you are using a mobile device , it is highly recommended to have a fast and stable internet connection to sync your physical location especially if you 're constantly moving to make sure that we can provide the appropriate resolution to your concern , we d like to ask you a few questions we re looking forward to your response __eou__	Agent
+Joe	PA	go to the bing maps website , search for your neighbourhood and then use the feedback or report a problem button to report the issue this will then get routed to the correct team in bing maps and investigated and if valid , fixed in a future data update __eou__	Agent

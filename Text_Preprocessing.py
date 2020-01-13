@@ -36,10 +36,14 @@ def stemming(data):
         new_text.append(ps.stem(word))
     return new_text
 
+def rm_numbers(text):
+    return re.sub("^\d+\s|\s\d+\s|\s\d+$", " ", text)
+
 def preprocess_text(text):
     text = text.strip()
     text = text.lower()
     text = rm_mentions(text)
+    text = rm_numbers(text)
     text = rm_code(text)
     text = rm_punctuation(text)
     text = remove_stop_words(text)

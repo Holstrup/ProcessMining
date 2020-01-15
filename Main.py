@@ -5,59 +5,24 @@ import DataProcessing_02012020
 import XML_Extraction
 import Extraction
 import Message_Classifier
-from os import listdir
-from os.path import isfile, join
+
 import pandas as pd
 
-
-def get_training_dataframe_xml(folder_name):
-    data_process = DataProcessing_02012020.DataProcessing(has_class=True)
-    # load nyc data to dataframe
-
-    all_files = [f for f in listdir(folder_name) if isfile(join(folder_name, f))]
-
-    for file in all_files:
-        try:
-            file = XML_Extraction.ExtractDataLog(folder_name + '/' + file)
-            dict = file.create_dict()
-
-            data_process.load_dict(dict)
-            data_process.append_dataframe()
-        except xml.etree.ElementTree.ParseError:
-            print("Cannot import " + file)
-
-    dataframe = data_process.get_clean_dataframe()
-
-    return dataframe
+import data_formatting
+from Kaggle_Miner import mine_conversations
+from Kaggle_TF import Kaggle_TF
+from Kaggle_IDF import Kaggle_IDF
+from datetime import datetime
+from pm4py.objects.log.exporter.xes import factory as xes_exporter
 
 
-def get_test_dataframe(file):
-    data_process = DataProcessing_02012020.DataProcessing()
-
-    data = Extraction.Extract(file).get_all_threads_list()
-    total = len(data)
-    current = 0
-    for dict in data:
-        current += 1
-        data_process.load_dict(dict)
-        try:
-            data_process.append_dataframe()
-        except KeyError:
-            print(dict)
-            continue
-        print("{0} of {1}".format(current, total))
-    dataframe = data_process.get_clean_dataframe()
-    return dataframe
-
-
-    # Stop datetime
-    stop_datetime = datetime.strptime("2015-01-15T00:00:00.000Z", '%Y-%m-%dT%H:%M:%S.%fZ')
 
 if __name__ == '__main__':
+    """
     # test_dataframe = get_test_dataframe('MSDialog')
 
     # save dataframes
-    '''
+    
     test_dataframe = get_test_dataframe('MSDialog')
     test_dataframe.to_pickle("test_dataframe")
     training_data = get_training_dataframe_xml("Ubuntu")
@@ -84,4 +49,41 @@ if __name__ == '__main__':
     classification.evaluate_models()
 
     #Predict data
-    classification.predict_class(test_dataframe)
+    predicted class= classification.predict_class(test_dataframe,"MSDialog_rf)"""
+
+
+    """ Hyper-parameters """
+    # How long is a conversation active for? In minutes
+    conversation_duration = 15.0  # Minutes
+
+    # Pandas chunk size
+    chunksize = 10 ** 3
+
+    # Stop datetime
+    stop_datetime = datetime.strptime("2020-03-30T00:00:00.000Z", '%Y-%m-%dT%H:%M:%S.%fZ')
+
+    """ Runner Code """
+    #idf = Kaggle_IDF(chunksize, stop_datetime, "Data/Kaggle/chatroom.csv")
+    idf = Kaggle_IDF(chunksize, stop_datetime, "synthetic_data.csv")
+
+
+    print("Done mining words")
+    #log = mine_conversations(idf, "Data/Kaggle/chatroom.csv", stop_datetime, chunksize, conversation_duration)
+    log = mine_conversations(idf, "synthetic_data.csv", stop_datetime, chunksize, conversation_duration)
+    print("Done mining conversations")
+    xes_exporter.export_log(log, "synthetic_data_processed.xes")
+
+    '''# Inistantiate Classifier
+    classification = Message_Classifier.MessageClassifier()
+
+    training_data = data_formatting.format_and_msdialog('MSDialog/Intent/train_features.tsv')
+    #print(training_data)
+    test_data=data_formatting.format_and_msdialog('MSDialog/Intent/test_features.tsv')
+
+    # load training data to class to able to train and evaluate models' performance
+    classification.load_data_for_training(training_data)
+    classification.load_data_for_test(test_data)
+
+    # save fitted models in directory
+    classification.save_models()'''
+

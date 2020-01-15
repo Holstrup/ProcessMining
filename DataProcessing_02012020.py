@@ -1,3 +1,8 @@
+import xml
+
+from os import listdir
+from os.path import isfile, join
+
 import pandas as pd
 from collections import Counter
 from sklearn.feature_extraction.text import CountVectorizer
@@ -10,39 +15,31 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import PorterStemmer
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
+import Extraction
 import XML_Extraction
 
 
 class DataProcessing:
     has_class: bool
 
-    def __init__(self, has_class=False):
-        self.has_class = has_class
-        if has_class:
-            self.df = pd.DataFrame(columns=['IUS', 'DS', '?', 'D', 'What',
-                                            'Where', 'When', 'Why', 'Who', 'How',
-                                            'AP', 'NP', 'UL', 'ULU', 'ULSU', 'IS',
-                                            'T', '!', 'FB', 'SS(Neu)', 'SS(Pos)', 'SS(Neg)', 'Lex(Pos)', 'Lex(Neg)',
-                                            'Class'])
-        else:
-            self.df = pd.DataFrame(columns=['IUS', 'DS', '?', 'D', 'What',
-                                            'Where', 'When', 'Why', 'Who', 'How',
-                                            'AP', 'NP', 'UL', 'ULU', 'ULSU', 'IS',
-                                            'T', '!', 'FB', 'SS(Neu)', 'SS(Pos)', 'SS(Neg)', 'Lex(Pos)', 'Lex(Neg)'])
+    def __init__(self):
+
         self.sentiment_analyser = SentimentIntensityAnalyzer()
 
-    def load_dict(self, dict):
+
+    def load_dict(self, dict, has_class):
 
         """Dict has following structure:
         {'Thread ID': Str, Posts: {abs_pos(int): {'User id': Str, 'Date': Str, 'Content': Str, 'Class': Str}}
                     """
         self.datadict = dict
+        self.has_class = has_class
 
     def append_dataframe(self):
 
         thread_id = self.datadict["Thread ID"]
         initial_post = self.datadict["Posts"][1]['Content']
-        initial_author = self.datadict["Posts"][1]['User ID']
+        initial_author = self.datadict["Posts"][1]['User id']
         entire_thread = self.get_dialogue()
         num_posts = len(self.datadict["Posts"])
 
@@ -108,7 +105,7 @@ class DataProcessing:
             row_dict['ULSU'] = self.get_unique_count_stemming(unique_filtered_content)
 
             # IS
-            row_dict['IS'] = initial_author == self.datadict["Posts"][abs_pos]['User ID']
+            row_dict['IS'] = initial_author == self.datadict["Posts"][abs_pos]['User id']
 
             # T
             row_dict['T'] = "thank" in content.lower() or "thanks" in content.lower()
@@ -137,6 +134,7 @@ class DataProcessing:
 
             # Create dataframe from dict
             new_row = pd.DataFrame(row_dict, index=[post_id])
+
 
             self.df = self.df.append(new_row, sort=False)
 
@@ -207,5 +205,67 @@ class DataProcessing:
         return numb_acc
 
 
+    def get_training_dataframe_xml(self, folder_name):
+        self.has_class = True
+
+        self.df = pd.DataFrame(columns=['IUS', 'DS', '?', 'D', 'What',
+                                        'Where', 'When', 'Why', 'Who', 'How',
+                                        'AP', 'NP', 'UL', 'ULU', 'ULSU', 'IS',
+                                        'T', '!', 'FB', 'SS(Neu)', 'SS(Pos)', 'SS(Neg)', 'Lex(Pos)', 'Lex(Neg)',
+                                        'Class'])
+        # load nyc data to dataframe
+
+        all_files = [f for f in listdir(folder_name) if isfile(join(folder_name, f))]
+
+        for file in all_files:
+            try:
+                file = XML_Extraction.ExtractDataLog(folder_name + '/' + file)
+                dict = file.create_dict()
+
+                self.load_dict(dict,True)
+                self.append_dataframe()
+            except xml.etree.ElementTree.ParseError:
+                print("Cannot import " + file)
+
+        dataframe = self.get_clean_dataframe()
+
+        return dataframe
+
+
+    def get_test_dataframe(self,data):
+
+        self.has_class = False
+
+        self.df = pd.DataFrame(columns=['IUS', 'DS', '?', 'D', 'What',
+                                        'Where', 'When', 'Why', 'Who', 'How',
+                                        'AP', 'NP', 'UL', 'ULU', 'ULSU', 'IS',
+                                        'T', '!', 'FB', 'SS(Neu)', 'SS(Pos)', 'SS(Neg)', 'Lex(Pos)', 'Lex(Neg)'])
+
+        total = len(data)
+        current = 0
+        for dict in data:
+            current += 1
+            self.load_dict(dict)
+            try:
+                self.append_dataframe()
+            except KeyError:
+                print(dict)
+                continue
+            print("{0} of {1}".format(current, total))
+        dataframe = self.get_clean_dataframe()
+        return dataframe
+
+
+    def get_dataframe(self):
+        self.df = pd.DataFrame(columns=['IUS', 'DS', '?', 'D', 'What',
+                                        'Where', 'When', 'Why', 'Who', 'How',
+                                        'AP', 'NP', 'UL', 'ULU', 'ULSU', 'IS',
+                                        'T', '!', 'FB', 'SS(Neu)', 'SS(Pos)', 'SS(Neg)', 'Lex(Pos)', 'Lex(Neg)'])
+
+
+        self.append_dataframe()
+        dataframe = self.get_clean_dataframe()
+
+        return dataframe
 
 

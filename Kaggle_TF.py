@@ -3,7 +3,7 @@ import pandas as pd
 import Text_Preprocessing as TP
 
 def Kaggle_TF(chunksize, stop_datetime, csv_file_path):
-    datetime_object = datetime.strptime("2015-01-01T00:00:00.000Z", '%Y-%m-%dT%H:%M:%S.%fZ')
+    datetime_object = datetime.strptime("2020-01-01T00:00:00.000Z", '%Y-%m-%dT%H:%M:%S.%fZ')
     break_loop = False
     word_dict = {}
     for chunk in pd.read_csv(csv_file_path, chunksize=chunksize, usecols=["text", "sent"]):

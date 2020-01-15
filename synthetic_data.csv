@@ -1,0 +1,19 @@
+id, text, sent, fromUser.username
+User1,Hi. How do I print in a console?,2020-01-01T23:03:20.182Z,User1
+User2,@User1: in python printing in the console can be done by writing print(write_here),2020-01-01T23:03:21.182Z,User2
+User1,@User2 It is not printing in the console. Im not using python,2020-01-01T23:03:22.182Z,User1
+User3,hi. How do I install LOL?,2020-01-01T23:03:23.182Z,User3
+User3,I have tried installing it for days,2020-01-01T23:03:24.182Z,User3
+User2,@User1 What language are you referring to?,2020-01-01T23:03:25.182Z,User2
+User4, @User3 I also want to know how to install LOL?,2020-01-01T23:03:26.182Z,User4
+User1,@User2 Im using Java,2020-01-01T23:31:20.182Z,User1
+User5,@User3 what operating system are you using?,2020-01-01T23:03:27.182Z,User5
+User2, @User1 In Java write 'System.out.print(write_here)',2020-01-01T23:03:28.182Z,User2
+User1, That's working! Thanks @User2,2020-01-01T23:03:29.182Z,User1
+User3, @User5 MacOS,2020-01-01T23:03:30.182Z,User3
+User5, @User3 you can find instructions using this link,2020-01-01T23:03:31.182Z,User5
+
+
+
+
+

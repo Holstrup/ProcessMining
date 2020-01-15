@@ -1,4 +1,4 @@
-id, text, sent, fromUser.username
+id,text,sent,fromUser.username
 User1,Hi. How do I print in a console?,2020-01-01T23:03:20.182Z,User1
 User2,@User1: in python printing in the console can be done by writing print(write_here),2020-01-01T23:03:21.182Z,User2
 User1,@User2 It is not printing in the console. Im not using python,2020-01-01T23:03:22.182Z,User1

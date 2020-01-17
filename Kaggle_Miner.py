@@ -15,14 +15,15 @@ def mine_conversations(idf, csv_file_path, stop_datetime, chunksize, conversatio
     open_conversations = []
     log = pmlog.EventLog()
     score_stats = []
-    for chunk in pd.read_csv(csv_file_path, chunksize=chunksize, usecols = ["id", "fromUser.displayName", "text", "sent", "fromUser.username"]):
+    columns = ['id', 'text', 'sent', 'fromUser.username']
+    for chunk in pd.read_csv(csv_file_path, chunksize=chunksize, usecols=columns, sep=','):
         # Terminate after late date, to trim dataset.
+
         if datetime_object > stop_datetime:
             break_loop = True
 
 
         if break_loop:
-            break_loop = True
             break
 
         for index, row in chunk.iterrows():
@@ -34,7 +35,7 @@ def mine_conversations(idf, csv_file_path, stop_datetime, chunksize, conversatio
                 if str(text) == "nan":
                     continue
 
-                if len(text.split(" ")) <= 7: # Filter out messages with less than n words
+                if len(text.split(" ")) <= 2: # Filter out messages with less than n words
                     continue
 
                 datetime_object = datetime.strptime(row["sent"], '%Y-%m-%dT%H:%M:%S.%fZ')
@@ -42,10 +43,11 @@ def mine_conversations(idf, csv_file_path, stop_datetime, chunksize, conversatio
 
                 # Creating an event
                 event_dict = {}
-                event_dict['concept:name'] = row["fromUser.displayName"]
+                event_dict['concept:name'] = row["fromUser.username"] # fromUser.displayName
                 event_dict["time:timestamp"] = datetime_object
                 event = pmlog.Event(event_dict)
 
+                """
                 for conversation in open_conversations:
                     time_diff = (datetime_object - conversation.open_time).total_seconds() / 60.0
                     if time_diff > conversation_duration:
@@ -53,7 +55,7 @@ def mine_conversations(idf, csv_file_path, stop_datetime, chunksize, conversatio
                             log.append(conversation.add_to_trace())
                             conversation.write_to_txt()
                         open_conversations.remove(conversation)
-
+                """
 
                 # Now we find our text body
                 tf_idf_message = {}
@@ -61,7 +63,6 @@ def mine_conversations(idf, csv_file_path, stop_datetime, chunksize, conversatio
                 for word in set(text_list):
                     if word in idf:
                         tf_idf_message[word] = (text_list.count(word) / len(text_list)) * idf[word]
-
 
                 mention = TP.get_mentions(text)
                 if len(mention) > 0:
@@ -79,7 +80,6 @@ def mine_conversations(idf, csv_file_path, stop_datetime, chunksize, conversatio
                         if conversation_score > score:
                             score = conversation_score
                             best_matching_conversation = conversation
-
                     if best_matching_conversation != None and score > 0.05:
                         score_stats.append(score)
                         best_matching_conversation.add_message(event, message_text=row["text"],
@@ -96,8 +96,13 @@ def mine_conversations(idf, csv_file_path, stop_datetime, chunksize, conversatio
                 continue
 
         print(datetime_object)
-    print(score_stats)
-    print(sum(score_stats) / len(score_stats))
-    print(min(score_stats))
-    print(max(score_stats))
+
+    print(open_conversations)
+    print(len(log))
+    for conversation in open_conversations:
+        # if len(conversation.message_texts) > 1:
+        log.append(conversation.add_to_trace())
+        conversation.write_to_txt()
+        # open_conversations.remove(conversation)
+    print(len(log))
     return log

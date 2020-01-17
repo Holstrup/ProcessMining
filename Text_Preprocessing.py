@@ -39,6 +39,7 @@ def preprocess_text(text):
     text = rm_mentions(text)
     text = rm_code(text)
     text = rm_punctuation(text)
+    # text = rm_urls(text)
     text = remove_stop_words(text)
     text = text.split(" ")
     text = stemming(text)
